@@ -1,5 +1,7 @@
 # What the Hugging Face Incident Teaches Us About Autonomous Execution
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22698601.svg)](https://doi.org/10.5281/zenodo.22698601)
 
+**DOI:** https://doi.org/10.5281/zenodo.22698601
 ## Field Analysis
 
 This field analysis examines the July 2026 autonomous-agent cybersecurity incident involving OpenAI evaluation agents and Hugging Face infrastructure.
