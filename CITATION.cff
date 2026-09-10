@@ -8,6 +8,12 @@ type: report
 date-released: "2026-09-10"
 url: "https://github.com/KeyWow-Global/constitutional-computing"
 repository-code: "https://github.com/KeyWow-Global/constitutional-computing"
+doi: "10.5281/zenodo.22698601"
+
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22698601"
+    description: "Zenodo DOI"
 keywords:
   - Constitutional Computing
   - Governed Autonomy
