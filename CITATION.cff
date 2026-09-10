@@ -1,26 +1,23 @@
 cff-version: 1.2.0
-message: "If you use or reference this work, please cite it."
+message: "If you use or reference this work, please cite it using these metadata."
 title: "Constitutional Computing: Public Research"
 authors:
   - name: "KeyWow"
-publisher: "KeyWow"
-type: report
 date-released: "2026-09-10"
 url: "https://github.com/KeyWow-Global/constitutional-computing"
 repository-code: "https://github.com/KeyWow-Global/constitutional-computing"
 doi: "10.5281/zenodo.22698601"
-
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22698601"
     description: "Zenodo DOI"
 keywords:
-  - Constitutional Computing
-  - Governed Autonomy
-  - autonomous execution
-  - AI governance
-  - runtime admissibility
-  - execution governance
-  - autonomous agents
-  - AI infrastructure
-  - agentic AI
+  - "Constitutional Computing"
+  - "Governed Autonomy"
+  - "autonomous execution"
+  - "AI governance"
+  - "runtime admissibility"
+  - "execution governance"
+  - "autonomous agents"
+  - "AI infrastructure"
+  - "agentic AI"
