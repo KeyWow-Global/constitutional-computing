@@ -1,5 +1,4 @@
 # Constitutional Computing
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22698601.svg)](https://doi.org/10.5281/zenodo.22698601)
 Public research from KeyWow on the infrastructure required to make increasingly autonomous systems governable before consequential state changes occur.
 
 ## What is Constitutional Computing?
@@ -121,6 +120,6 @@ Unless otherwise stated, public research and documentation in this repository ar
 
 ## Citation
 
-Citation metadata is available in:
+[CITATION.cff](CITATION.cff) describes the **Constitutional Computing: Public Research** collection.
 
-[CITATION.cff](CITATION.cff)
+Individual papers should be cited using the citation information in their own README files.

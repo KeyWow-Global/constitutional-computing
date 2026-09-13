@@ -53,7 +53,7 @@ See:
 
 ## Citation
 
-Paper-specific citation information will be added with the archival release metadata.
+KeyWow. *Beyond Policy-as-Code: Admissibility as a Runtime Primitive for Autonomous Systems.* Technical paper. KeyWow, 2026.
 
 The repository-level [`CITATION.cff`](../../CITATION.cff) describes the broader **Constitutional Computing: Public Research** collection.
 
