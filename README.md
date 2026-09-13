@@ -1,5 +1,4 @@
 # Constitutional Computing
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22698601.svg)](https://doi.org/10.5281/zenodo.22698601)
 Public research from KeyWow on the infrastructure required to make increasingly autonomous systems governable before consequential state changes occur.
 
 ## What is Constitutional Computing?
@@ -20,6 +19,24 @@ KeyWow's research focuses on the transition from:
 - tool access to governed capability exercise;
 - self-reported outcomes to independent validation;
 - autonomous execution to Governed Autonomy.
+
+## Technical Papers
+
+### Beyond Policy-as-Code: Admissibility as a Runtime Primitive for Autonomous Systems
+
+*How Constitutional Computing builds on reference monitors, capability security, policy enforcement and least privilege for systems that generate their own execution paths.*
+
+This paper examines the runtime governance problem created by autonomous systems that dynamically generate execution paths.
+
+It develops the distinction between **capability, permission, authorization and admissibility**, and argues that consequential actions should cross deterministic, inspectable and enforceable execution boundaries without requiring the agent's reasoning process itself to become deterministic.
+
+**Domain:** Execution governance for autonomous AI  
+**Objective:** Governed Autonomy
+
+- [Paper overview](technical-papers/beyond-policy-as-code/README.md)
+- [References](references/beyond-policy-as-code.md)
+
+[Technical paper (PDF)](technical-papers/beyond-policy-as-code/beyond-policy-as-code.pdf)
 
 ## Featured Field Analysis
 
@@ -103,6 +120,6 @@ Unless otherwise stated, public research and documentation in this repository ar
 
 ## Citation
 
-Citation metadata is available in:
+[CITATION.cff](CITATION.cff) describes the **Constitutional Computing: Public Research** collection.
 
-[CITATION.cff](CITATION.cff)
+Individual papers should be cited using the citation information in their own README files.
