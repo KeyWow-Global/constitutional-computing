@@ -21,6 +21,24 @@ KeyWow's research focuses on the transition from:
 - self-reported outcomes to independent validation;
 - autonomous execution to Governed Autonomy.
 
+## Technical Papers
+
+### Beyond Policy-as-Code: Admissibility as a Runtime Primitive for Autonomous Systems
+
+*How Constitutional Computing builds on reference monitors, capability security, policy enforcement and least privilege for systems that generate their own execution paths.*
+
+This paper examines the runtime governance problem created by autonomous systems that dynamically generate execution paths.
+
+It develops the distinction between **capability, permission, authorization and admissibility**, and argues that consequential actions should cross deterministic, inspectable and enforceable execution boundaries without requiring the agent's reasoning process itself to become deterministic.
+
+**Domain:** Execution governance for autonomous AI  
+**Objective:** Governed Autonomy
+
+- [Paper overview](technical-papers/beyond-policy-as-code/README.md)
+- [References](references/beyond-policy-as-code.md)
+
+[Technical paper (PDF)](technical-papers/beyond-policy-as-code/beyond-policy-as-code.pdf)
+
 ## Featured Field Analysis
 
 ### What the Hugging Face Incident Teaches Us About Autonomous Execution
