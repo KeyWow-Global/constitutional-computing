@@ -2,6 +2,10 @@
 
 *How Constitutional Computing builds on reference monitors, capability security, policy enforcement and least privilege for systems that generate their own execution paths.*
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22738519.svg)](https://doi.org/10.5281/zenodo.22738519)
+
+DOI: https://doi.org/10.5281/zenodo.22738519
+
 **Publication type:** Technical paper  
 **Publisher:** KeyWow  
 **Domain:** Execution governance for autonomous AI  
@@ -53,7 +57,7 @@ See:
 
 ## Citation
 
-KeyWow. *Beyond Policy-as-Code: Admissibility as a Runtime Primitive for Autonomous Systems.* Technical paper. KeyWow, 2026.
+KeyWow. (2026). *Beyond Policy-as-Code: Admissibility as a Runtime Primitive for Autonomous Systems* (Version 1.0.0). KeyWow. https://doi.org/10.5281/zenodo.22738519
 
 The repository-level [`CITATION.cff`](../../CITATION.cff) describes the broader **Constitutional Computing: Public Research** collection.
 
