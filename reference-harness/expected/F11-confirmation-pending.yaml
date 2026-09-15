@@ -1,0 +1,3 @@
+case_id: F11
+expected:
+  confirmation: PENDING
