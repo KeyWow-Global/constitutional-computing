@@ -1,0 +1,3 @@
+case_id: F01
+expected:
+  decision: ADMITTED

@@ -1,0 +1,3 @@
+case_id: F12
+expected:
+  demo_call: REJECTED
