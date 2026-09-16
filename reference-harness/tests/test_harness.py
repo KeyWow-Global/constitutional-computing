@@ -59,26 +59,26 @@ class ScenarioTests(unittest.TestCase):
         expected = cli._read_expected(ROOT / "expected" / (stem + ".yaml"), case_id)
         self.assertEqual(actual, expected)
 
-    def test_f01(self): self.check_case("F01")
-    def test_f02(self): self.check_case("F02")
-    def test_f03(self): self.check_case("F03")
-    def test_f04(self): self.check_case("F04")
-    def test_f05(self): self.check_case("F05")
-    def test_f06(self): self.check_case("F06")
-    def test_f07(self): self.check_case("F07")
-    def test_f08(self): self.check_case("F08")
-    def test_f09(self): self.check_case("F09")
-    def test_f10(self): self.check_case("F10")
-    def test_f11(self): self.check_case("F11")
-    def test_f12(self): self.check_case("F12")
-    def test_f13(self): self.check_case("F13")
-    def test_f14(self): self.check_case("F14")
+    def test_c01(self): self.check_case("C01")
+    def test_c02(self): self.check_case("C02")
+    def test_c03(self): self.check_case("C03")
+    def test_c04(self): self.check_case("C04")
+    def test_c05(self): self.check_case("C05")
+    def test_c06(self): self.check_case("C06")
+    def test_c07(self): self.check_case("C07")
+    def test_c08(self): self.check_case("C08")
+    def test_c09(self): self.check_case("C09")
+    def test_c10(self): self.check_case("C10")
+    def test_c11(self): self.check_case("C11")
+    def test_c12(self): self.check_case("C12")
+    def test_c13(self): self.check_case("C13")
+    def test_c14(self): self.check_case("C14")
 
 
 class UnitTests(unittest.TestCase):
     def test_status_domains(self):
         self.assertEqual(set(typing.get_args(DemoExecutionStatus)), {"EXECUTED", "NOT_EXECUTED"})
-        self.assertEqual(set(typing.get_args(ConfirmationStatus)), {"CONFIRMED", "PENDING", "FAILED", "NOT_REQUIRED"})
+        self.assertEqual(set(typing.get_args(ConfirmationStatus)), {"CONFIRMED", "PENDING"})
         hints = typing.get_type_hints(SyntheticResult)
         self.assertEqual(set(hints), {"decision", "execution", "confirmation"})
         self.assertEqual(set(typing.get_args(hints["decision"])), {"ADMITTED", "ADMITTED_WITH_CONTROLS", "BLOCKED", "UNRESOLVED"})
@@ -107,9 +107,9 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(baseline(False), {"execution": "NOT_EXECUTED"})
 
     def test_all_cli_commands(self):
-        f = str(ROOT / "fixtures/F02-protected-target.json")
+        f = str(ROOT / "fixtures/C02-protected-target.json")
         self.assertEqual(invoke(["evaluate", f]), (0, {"decision": "BLOCKED"}))
-        self.assertEqual(invoke(["compose", str(ROOT / "fixtures/F08-aggregate-limit.json")]), (0, {"decision": "BLOCKED"}))
+        self.assertEqual(invoke(["compose", str(ROOT / "fixtures/C08-aggregate-limit.json")]), (0, {"decision": "BLOCKED"}))
         for flag, value in (("true", "EXECUTED"), ("false", "NOT_EXECUTED")):
             self.assertEqual(invoke(["baseline", "--baseline-authorized", flag]), (0, {"execution": value}))
             self.assertEqual(invoke(["compare", f, "--baseline-authorized", flag]),
@@ -121,7 +121,7 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(report["runtime_disclaimer"], RUNTIME_DISCLAIMER)
 
     def test_cli_requires_explicit_baseline(self):
-        for args in (["baseline"], ["compare", str(ROOT / "fixtures/F01-low-impact-development.json")]):
+        for args in (["baseline"], ["compare", str(ROOT / "fixtures/C01-low-impact-development.json")]):
             with redirect_stderr(StringIO()), self.assertRaises(SystemExit) as error:
                 cli.main(args)
             self.assertEqual(error.exception.code, 2)
@@ -141,7 +141,7 @@ class UnitTests(unittest.TestCase):
                              {"harness_version": "0.1.0", "reproduction_checksum": expected})
             self.assertEqual(len(list(target.iterdir())), 6)
             other = Path(directory) / "with-metrics"
-            self.assertEqual(write_reproduction(other, **args, metrics={}, fixture_identifier="F01"), expected)
+            self.assertEqual(write_reproduction(other, **args, metrics={}, fixture_identifier="C01"), expected)
             self.assertEqual(json.loads((other / "metrics.json").read_text()), {})
             self.assertEqual(len(list(other.iterdir())), 7)
 
@@ -154,42 +154,39 @@ class UnitTests(unittest.TestCase):
 
 
 class MetricTests(unittest.TestCase):
-    def test_approved_suite_rates(self):
+    def test_supported_suite_rates(self):
         metrics = calculate_metrics(cli.run_test_suite(ROOT))
         expected = {"false_admission_rate": (0, 7), "false_blocking_rate": (0, 4),
-                    "unresolved_rate": (2, 11), "demo_bypass_rate": (0, 1),
-                    "state_invalidation_failure_rate": (0, 1),
-                    "simple_composition_failure_rate": (0, 4), "confirmation_rate": (0, 1)}
+                    "unresolved_rate": (2, 11), "direct_demo_call_rejection_failure_rate": (0, 1),
+                    "version_mismatch_failure_rate": (0, 1),
+                    "composition_failure_rate": (0, 4), "confirmation_rate": (0, 1)}
         for name, (n, d) in expected.items():
             self.assertEqual(metrics[name], {"numerator": n, "denominator": d, "value": n / d})
 
     def test_zero_denominators_and_unavailable(self):
         self.assertTrue(all(m["value"] is None for m in calculate_metrics([]).values()))
-        metrics = calculate_metrics(cli.run_test_suite(ROOT))
-        for name in ("task_completion_rate", "baseline_divergence_rate"):
-            self.assertEqual(metrics[name], {"numerator": None, "denominator": None, "value": None})
 
     def test_nonzero_failure_numerators(self):
         rows = cli.run_test_suite(ROOT)
-        changes = {"F01": {"decision": "UNRESOLVED"}, "F02": {"decision": "ADMITTED_WITH_CONTROLS"},
-                   "F05": {}, "F08": {"decision": "ADMITTED"}, "F11": {"confirmation": "CONFIRMED"},
-                   "F12": {"demo_call": "REJECTED", "execution": "EXECUTED"}}
+        changes = {"C01": {"decision": "UNRESOLVED"}, "C02": {"decision": "ADMITTED_WITH_CONTROLS"},
+                   "C05": {}, "C08": {"decision": "ADMITTED"}, "C11": {"confirmation": "CONFIRMED"},
+                   "C12": {"demo_call": "REJECTED", "execution": "EXECUTED"}}
         for row in rows:
             if row["case_id"] in changes: row["actual"] = changes[row["case_id"]]
         metrics = calculate_metrics(rows)
         for name, n in (("false_admission_rate", 2), ("false_blocking_rate", 1),
-                        ("unresolved_rate", 3), ("demo_bypass_rate", 1),
-                        ("state_invalidation_failure_rate", 1),
-                        ("simple_composition_failure_rate", 1), ("confirmation_rate", 1)):
+                        ("unresolved_rate", 3), ("direct_demo_call_rejection_failure_rate", 1),
+                        ("version_mismatch_failure_rate", 1),
+                        ("composition_failure_rate", 1), ("confirmation_rate", 1)):
             self.assertEqual(metrics[name]["numerator"], n)
 
     def test_controls_are_not_false_blocking(self):
-        rows = [{"case_id": "F04", "expected": {"decision": "ADMITTED_WITH_CONTROLS"},
+        rows = [{"case_id": "C04", "expected": {"decision": "ADMITTED_WITH_CONTROLS"},
                  "actual": {"decision": "ADMITTED"}}]
         self.assertEqual(calculate_metrics(rows)["false_blocking_rate"]["value"], 0)
 
     def test_missing_observations_are_not_inferred(self):
-        rows = [{"case_id": "F02", "expected": {"decision": "BLOCKED"}, "actual": {}}]
+        rows = [{"case_id": "C02", "expected": {"decision": "BLOCKED"}, "actual": {}}]
         metrics = calculate_metrics(rows)
         self.assertEqual(metrics["false_admission_rate"]["denominator"], 1)
         self.assertEqual(metrics["false_admission_rate"]["numerator"], 0)
@@ -214,8 +211,8 @@ class MetricTests(unittest.TestCase):
              patch.object(cli, "_read_expected", side_effect=read_expected):
             code, report = invoke(["test-suite"])
         self.assertEqual(code, 0)
-        self.assertEqual(events[:2], ["clock", "F01"])
-        self.assertEqual(events[-2:], ["expected-F14", "clock"])
+        self.assertEqual(events[:2], ["clock", "C01"])
+        self.assertEqual(events[-2:], ["expected-C14", "clock"])
         self.assertEqual(report["metrics"]["local_runtime_ms"]["value"], 250)
 
 
@@ -225,8 +222,8 @@ class InvariantTests(unittest.TestCase):
             root = Path(directory)
             shutil.copytree(ROOT / "fixtures", root / "fixtures")
             shutil.copytree(ROOT / "expected", root / "expected")
-            (root / "expected/F01-low-impact-development.yaml").write_text(
-                "case_id: F01\nexpected:\n  decision: BLOCKED\n")
+            (root / "expected/C01-low-impact-development.yaml").write_text(
+                "case_id: C01\nexpected:\n  decision: BLOCKED\n")
             code, report = invoke(["test-suite", "--root", str(root)])
             self.assertEqual(code, 1)
             self.assertEqual(report["cases"][0]["actual"], {"decision": "ADMITTED"})
@@ -252,7 +249,7 @@ class InvariantTests(unittest.TestCase):
             self.assertEqual(handler(request), before)
 
     def test_confirmation_ignores_invocation_completion(self):
-        request = fixture("F11")
+        request = fixture("C11")
         request["invocation_completed"] = False
         self.assertEqual(confirm(request), {"confirmation": "PENDING"})
 

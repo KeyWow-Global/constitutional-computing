@@ -26,19 +26,19 @@ def _demo_call(request):
 
 
 DISPATCH = {
-    "F01": evaluate, "F02": evaluate, "F03": evaluate, "F04": evaluate,
-    "F05": _version_observation, "F06": evaluate, "F07": evaluate,
-    "F08": compose, "F09": compose, "F10": compose, "F11": confirm,
-    "F12": _demo_call, "F13": evaluate, "F14": compose,
+    "C01": evaluate, "C02": evaluate, "C03": evaluate, "C04": evaluate,
+    "C05": _version_observation, "C06": evaluate, "C07": evaluate,
+    "C08": compose, "C09": compose, "C10": compose, "C11": confirm,
+    "C12": _demo_call, "C13": evaluate, "C14": compose,
 }
 
 FIXTURES = (
-    "F01-low-impact-development", "F02-protected-target",
-    "F03-missing-context", "F04-synthetic-control", "F05-version-change",
-    "F06-simple-action-a", "F07-simple-action-b", "F08-aggregate-limit",
-    "F09-explicit-prohibited-state", "F10-incomplete-aggregate-state",
-    "F11-confirmation-pending", "F12-direct-demo-execution",
-    "F13-restricted-synthetic-transfer", "F14-reformulated-aggregate-effect",
+    "C01-low-impact-development", "C02-protected-target",
+    "C03-missing-context", "C04-synthetic-control", "C05-version-change",
+    "C06-simple-action-a", "C07-simple-action-b", "C08-aggregate-limit",
+    "C09-explicit-prohibited-state", "C10-incomplete-aggregate-state",
+    "C11-confirmation-pending", "C12-direct-demo-execution",
+    "C13-restricted-synthetic-transfer", "C14-explicit-combined-reduction",
 )
 
 
@@ -51,14 +51,14 @@ def _actual(request):
 
 
 def _read_expected(path, case_id):
-    """Read only the approved three-line expected-file format, not general YAML."""
+    """Read only the supported three-line expected-file format, not general YAML."""
     text = Path(path).read_text(encoding="utf-8")
     match = re.fullmatch(
-        r"case_id: (F[0-9]{2})\nexpected:\n  "
+        r"case_id: (C[0-9]{2})\nexpected:\n  "
         r"(decision|execution|confirmation|demo_call): ([A-Z_]+)\n?", text,
     )
     if match is None or match[1] != case_id:
-        raise ValueError("Expected file must match the approved case and format")
+        raise ValueError("Expected file must match the supported case and format")
     return {match[2]: match[3]}
 
 
@@ -94,7 +94,7 @@ def main(argv=None):
     suite_parser.add_argument("--root", type=Path, default=(Path(__file__).resolve().parent / "_data"
                                       if (Path(__file__).resolve().parent / "_data").is_dir()
                                       else Path(__file__).resolve().parents[2]),
-                             help="Directory containing the approved fixtures and expected files")
+                             help="Directory containing the supported fixtures and expected files")
     args = parser.parse_args(argv)
     try:
         if args.command == "baseline":
@@ -108,8 +108,8 @@ def main(argv=None):
         else:
             request = _read_fixture(args.fixture)
             if args.command == "compose":
-                if request["case_id"] not in ("F08", "F09", "F10", "F14"):
-                    parser.error("compose accepts only the approved composition fixtures")
+                if request["case_id"] not in ("C08", "C09", "C10", "C14"):
+                    parser.error("compose accepts only the supported composition fixtures")
                 result = compose(request)
             elif args.command == "compare":
                 baseline_result = baseline(args.baseline_authorized == "true")

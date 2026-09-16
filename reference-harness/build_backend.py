@@ -16,12 +16,12 @@ def build_wheel(wheel_directory, config_settings=None, metadata_directory=None):
         "version_check",
     )
     cases = (
-        "F01-low-impact-development", "F02-protected-target",
-        "F03-missing-context", "F04-synthetic-control", "F05-version-change",
-        "F06-simple-action-a", "F07-simple-action-b", "F08-aggregate-limit",
-        "F09-explicit-prohibited-state", "F10-incomplete-aggregate-state",
-        "F11-confirmation-pending", "F12-direct-demo-execution",
-        "F13-restricted-synthetic-transfer", "F14-reformulated-aggregate-effect",
+        "C01-low-impact-development", "C02-protected-target",
+        "C03-missing-context", "C04-synthetic-control", "C05-version-change",
+        "C06-simple-action-a", "C07-simple-action-b", "C08-aggregate-limit",
+        "C09-explicit-prohibited-state", "C10-incomplete-aggregate-state",
+        "C11-confirmation-pending", "C12-direct-demo-execution",
+        "C13-restricted-synthetic-transfer", "C14-explicit-combined-reduction",
     )
     files = {f"cc_harness/{name}.py":
              (root / "src" / "cc_harness" / f"{name}.py").read_bytes()

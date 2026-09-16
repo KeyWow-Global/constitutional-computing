@@ -1,5 +1,5 @@
 {
-  "case_id": "F11",
+  "case_id": "C14",
   "numeric_values_note": "Synthetic test value. Not derived from production systems.",
   "actor": {
     "id": "demo-agent",
@@ -8,15 +8,13 @@
   "action": {
     "type": "reduce_replicas",
     "target": "service-alpha",
-    "amount": 1
+    "amount": 2
   },
   "context": {
     "environment": "development",
     "protected": false
   },
   "state": {
-    "replicas_remaining": 4
-  },
-  "invocation_completed": true,
-  "simulated_confirmation": false
+    "replicas_remaining": 3
+  }
 }

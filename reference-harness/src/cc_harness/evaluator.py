@@ -1,10 +1,10 @@
-"""Toy checks for the approved synthetic actions and explicit missing-field probes."""
+"""Toy checks for the supported synthetic actions and explicit missing-field probes."""
 
 from .models import SyntheticActionRequest, SyntheticResult
 
 
 def evaluate(request: SyntheticActionRequest) -> SyntheticResult:
-    """Evaluate approved fixture shapes without arbitrary-input validation.
+    """Evaluate supported fixture shapes without arbitrary-input validation.
 
     Missing context, action, or action type and unsupported actions are unresolved.
     """
@@ -16,7 +16,7 @@ def evaluate(request: SyntheticActionRequest) -> SyntheticResult:
 
     context = request["context"]
     if action_type == "transfer":
-        # Only explicitly restricted synthetic transfers have an authorized result.
+        # Only explicitly restricted synthetic transfers have an supported result.
         if context.get("restricted") is True:
             return {"decision": "BLOCKED"}
         return {"decision": "UNRESOLVED"}

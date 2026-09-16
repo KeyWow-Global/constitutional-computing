@@ -1,4 +1,4 @@
-"""Explicit v0.1 metrics over already-produced synthetic suite observations."""
+"""Explicit metrics over already-produced synthetic suite observations."""
 
 RUNTIME_DISCLAIMER = (
     "Local synthetic test-suite runtime. Not representative of production performance."
@@ -16,8 +16,8 @@ def calculate_metrics(rows, local_runtime_ms=None):
     positive = [r for r in rows if r["expected"].get("decision") in ("ADMITTED", "ADMITTED_WITH_CONTROLS")]
     decisions = [r for r in rows if "decision" in r["actual"]]
     direct = [r for r in rows if r["expected"] == {"demo_call": "REJECTED"}]
-    versions = [r for r in rows if r["case_id"] == "F05"]
-    composition = [r for r in rows if r["case_id"] in ("F08", "F09", "F10", "F14")]
+    versions = [r for r in rows if r["case_id"] == "C05"]
+    composition = [r for r in rows if r["case_id"] in ("C08", "C09", "C10", "C14")]
     confirmations = [r for r in rows if "confirmation" in r["actual"]]
     return {
         "false_admission_rate": _rate(sum(r["actual"].get("decision") in
@@ -26,15 +26,13 @@ def calculate_metrics(rows, local_runtime_ms=None):
             ("BLOCKED", "UNRESOLVED") for r in positive), len(positive)),
         "unresolved_rate": _rate(sum(r["actual"]["decision"] == "UNRESOLVED"
             for r in decisions), len(decisions)),
-        "demo_bypass_rate": _rate(sum(r["actual"] != {"demo_call": "REJECTED"}
+        "direct_demo_call_rejection_failure_rate": _rate(sum(r["actual"] != {"demo_call": "REJECTED"}
             for r in direct), len(direct)),
-        "state_invalidation_failure_rate": _rate(sum(r["actual"] !=
+        "version_mismatch_failure_rate": _rate(sum(r["actual"] !=
             {"execution": "NOT_EXECUTED"} for r in versions), len(versions)),
-        "simple_composition_failure_rate": _rate(sum(r["actual"] != r["expected"]
+        "composition_failure_rate": _rate(sum(r["actual"] != r["expected"]
             for r in composition), len(composition)),
         "confirmation_rate": _rate(sum(r["actual"]["confirmation"] == "CONFIRMED"
             for r in confirmations), len(confirmations)),
-        "task_completion_rate": {"numerator": None, "denominator": None, "value": None},
-        "baseline_divergence_rate": {"numerator": None, "denominator": None, "value": None},
         "local_runtime_ms": {"numerator": None, "denominator": None, "value": local_runtime_ms},
     }

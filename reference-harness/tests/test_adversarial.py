@@ -20,24 +20,24 @@ from cc_harness.version_check import is_current
 
 class AdversarialTests(unittest.TestCase):
     def test_01_missing_fields(self):
-        request = fixture("F01")
+        request = fixture("C01")
         del request["context"]
         self.assertEqual(evaluate(request), {"decision": "UNRESOLVED"})
-        request = fixture("F01")
+        request = fixture("C01")
         del request["action"]
         self.assertEqual(evaluate(request), {"decision": "UNRESOLVED"})
-        request = fixture("F01")
+        request = fixture("C01")
         del request["action"]["type"]
         self.assertEqual(evaluate(request), {"decision": "UNRESOLVED"})
 
     def test_02_unknown_action_must_not_silently_admit(self):
-        request = fixture("F01")
+        request = fixture("C01")
         request["action"]["type"] = "synthetic-unknown-action"
         result = evaluate(request)
         self.assertEqual(result, {"decision": "UNRESOLVED"})
 
     def test_02_unrestricted_transfer_is_unresolved(self):
-        request = fixture("F13")
+        request = fixture("C13")
         request["context"]["restricted"] = False
         self.assertEqual(evaluate(request), {"decision": "UNRESOLVED"})
         del request["context"]["restricted"]
@@ -58,25 +58,25 @@ class AdversarialTests(unittest.TestCase):
                          {"execution": "NOT_EXECUTED"})
 
     def test_05_duplicate_inputs(self):
-        request = fixture("F08")
+        request = fixture("C08")
         before = copy.deepcopy(request)
         self.assertEqual(compose(request), compose(copy.deepcopy(request)))
         self.assertEqual(request, before)
 
     def test_06_exact_numeric_boundary(self):
-        request = fixture("F14")
+        request = fixture("C14")
         request["state"]["replicas_remaining"] = 4
         # 4 - 2 equals the minimum; this check does not establish admission.
         self.assertEqual(compose(request), {})
 
     def test_07_one_above_boundary(self):
-        request = fixture("F14")
+        request = fixture("C14")
         request["state"]["replicas_remaining"] = 5
         # 5 - 2 is one above the minimum; no admission is inferred.
         self.assertEqual(compose(request), {})
 
     def test_08_reordered_explicit_sequence(self):
-        request = fixture("F09")
+        request = fixture("C09")
         request["sequence"].reverse()
         self.assertEqual(compose(request), {"decision": "BLOCKED"})
 
@@ -85,14 +85,14 @@ class AdversarialTests(unittest.TestCase):
         self.assertEqual(execute({}), {"demo_call": "REJECTED"})
 
     def test_10_missing_confirmation(self):
-        request = fixture("F11")
+        request = fixture("C11")
         del request["simulated_confirmation"]
         # Missing confirmation is unsupported; no confirmation is inferred.
         with self.assertRaises(KeyError):
             confirm(request)
 
     def test_11_unknown_context_field(self):
-        request = fixture("F02")
+        request = fixture("C02")
         request["context"]["synthetic_extra_field"] = "ignored"
         self.assertEqual(evaluate(request), {"decision": "BLOCKED"})
 

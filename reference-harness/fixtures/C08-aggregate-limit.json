@@ -1,5 +1,5 @@
 {
-  "case_id": "F08",
+  "case_id": "C08",
   "numeric_values_note": "Synthetic test value. Not derived from production systems.",
   "actor": {
     "id": "demo-agent",

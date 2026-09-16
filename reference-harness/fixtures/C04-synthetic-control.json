@@ -1,5 +1,5 @@
 {
-  "case_id": "F12",
+  "case_id": "C04",
   "numeric_values_note": "Synthetic test value. Not derived from production systems.",
   "actor": {
     "id": "demo-agent",
@@ -12,11 +12,10 @@
   },
   "context": {
     "environment": "development",
-    "protected": false
+    "protected": false,
+    "required_control": "demo-operator confirmation"
   },
   "state": {
     "replicas_remaining": 4
-  },
-  "direct_demo_executor_call": true,
-  "supplied_result": null
+  }
 }
