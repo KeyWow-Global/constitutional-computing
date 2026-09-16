@@ -16,7 +16,7 @@ def evaluate(request: SyntheticActionRequest) -> SyntheticResult:
 
     context = request["context"]
     if action_type == "transfer":
-        # Only explicitly restricted synthetic transfers have an supported result.
+        # Only explicitly restricted synthetic transfers have a supported result.
         if context.get("restricted") is True:
             return {"decision": "BLOCKED"}
         return {"decision": "UNRESOLVED"}

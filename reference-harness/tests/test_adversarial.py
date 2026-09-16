@@ -1,4 +1,4 @@
-"""Authorized adversarial probes; no runtime behavior is added.
+"""Synthetic adversarial probes; no runtime behavior is added.
 
 All numerical values are synthetic test values, not production-derived.
 """

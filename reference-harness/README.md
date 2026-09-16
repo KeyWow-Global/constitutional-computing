@@ -4,9 +4,9 @@
 
 > This project is a synthetic public reference harness for reproducible experimentation. It is not the KeyWow production system and should not be interpreted as describing KeyWow's internal implementation.
 
-The harness implements narrow synthetic checks, fixed fixture dispatch, a pass-through reproduction writer, and tests for the supplied cases. Expected results remain independent requirements; the test suite compares them with actual observations. Passing these tests demonstrates only the tested synthetic behavior, not production enforcement or performance.
+The harness implements narrow synthetic checks, fixed fixture dispatch, a pass-through reproduction writer, and tests for the supplied cases. Expected results are stored separately; the test suite compares them with actual observations. Passing these tests demonstrates only the tested synthetic behavior, not production enforcement or performance.
 
-## Independent design
+## Design scope
 
 > This public reference harness is a standalone synthetic implementation of the supplied public cases. It is not a description of production architecture.
 
