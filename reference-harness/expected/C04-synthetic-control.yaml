@@ -1,0 +1,3 @@
+case_id: C04
+expected:
+  decision: ADMITTED_WITH_CONTROLS

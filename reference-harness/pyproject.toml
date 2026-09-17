@@ -1,0 +1,14 @@
+[project]
+name = "cc-harness"
+version = "0.1.0"
+description = "Synthetic public reference harness scaffold"
+readme = "README.md"
+license = { file = "LICENSE" }
+
+[project.scripts]
+cc-harness = "cc_harness.cli:main"
+
+[build-system]
+requires = []
+build-backend = "build_backend"
+backend-path = ["."]

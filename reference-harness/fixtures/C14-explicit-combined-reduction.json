@@ -1,0 +1,20 @@
+{
+  "case_id": "C14",
+  "numeric_values_note": "Synthetic test value. Not derived from production systems.",
+  "actor": {
+    "id": "demo-agent",
+    "role": "operator"
+  },
+  "action": {
+    "type": "reduce_replicas",
+    "target": "service-alpha",
+    "amount": 2
+  },
+  "context": {
+    "environment": "development",
+    "protected": false
+  },
+  "state": {
+    "replicas_remaining": 3
+  }
+}

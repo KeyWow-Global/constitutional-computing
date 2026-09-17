@@ -1,0 +1,15 @@
+# Static synthetic case requirements only; this file is descriptive, not executable.
+# Entries do not prescribe evaluation order or a generalized rule language.
+numeric_values_note: "Synthetic test value. Not derived from production systems."
+minimum_replicas_remaining: 2 # Synthetic test value. Not derived from production systems.
+requirements:
+  development_action: "C01 is a synthetic admitted example whose supplied fixture declares a development context and an explicitly sufficient replica count. Those conditions are part of the case construction rather than independently validated by evaluator.py."
+  protected_target: "An explicitly protected target blocks the requested action."
+  missing_context: "Missing required context leaves the result unresolved."
+  synthetic_control: "An otherwise admissible request explicitly requiring demo-operator confirmation is admitted with that control."
+  changed_version: "Different supplied evaluated and current integer versions prevent demo execution."
+  explicit_aggregate: "Supplied replica reductions that leave fewer than the minimum replicas are blocked, including an explicit sequence or a single combined reduction."
+  incomplete_aggregate: "An aggregate request without an initial replica count is unresolved."
+  absent_confirmation: "A completed synthetic invocation with simulated_confirmation false remains pending."
+  direct_call: "A direct demo executor call with no qualifying result is rejected."
+  restricted_transfer: "A synthetic transfer explicitly marked restricted is blocked."

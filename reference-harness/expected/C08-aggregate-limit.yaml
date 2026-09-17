@@ -1,0 +1,3 @@
+case_id: C08
+expected:
+  decision: BLOCKED

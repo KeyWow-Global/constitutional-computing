@@ -1,0 +1,19 @@
+{
+  "case_id": "C13",
+  "numeric_values_note": "Synthetic test value. Not derived from production systems.",
+  "actor": {
+    "id": "demo-agent",
+    "role": "operator"
+  },
+  "action": {
+    "type": "transfer",
+    "source": "service-alpha",
+    "target": "service-beta",
+    "amount": 1
+  },
+  "context": {
+    "environment": "development",
+    "protected": false,
+    "restricted": true
+  }
+}
