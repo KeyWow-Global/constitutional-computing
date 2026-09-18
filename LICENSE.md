@@ -20,9 +20,11 @@ The full license terms are available at:
 
 https://creativecommons.org/licenses/by-nc-nd/4.0/
 
-## No software license
+## Software and technology
 
-This repository does not grant any license to software, source code, algorithms, system architecture, APIs, models, implementation methods, technical enforcement mechanisms, or other proprietary technology of KeyWow.
+Except for the expressly stated public reference harness exception below, this repository does not grant any license to software, source code, algorithms, system architecture, APIs, models, implementation methods, technical enforcement mechanisms, or other proprietary technology of KeyWow.
+
+Exception: source code contained in `reference-harness/` is separately licensed under the BSD 3-Clause License contained in `reference-harness/LICENSE`. This exception applies only to that directory and does not extend to KeyWow proprietary architecture, unpublished software, algorithms, technical mechanisms, trademarks, patent rights, trade secrets, customer-specific configurations, or other proprietary technology.
 
 Any references to Constitutional Computing, Governed Autonomy, autonomous execution, runtime admissibility, execution governance, or related concepts are provided for research and informational purposes only.
 

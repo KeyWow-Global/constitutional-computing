@@ -108,7 +108,11 @@ https://keywowglobal.com
 
 ## Repository Scope
 
-This repository contains public research and field analysis only.
+This repository contains public research, field analysis, and the Constitutional Computing Public Reference Harness.
+
+The public reference harness is a synthetic, non-production software artifact located in `reference-harness/` and is separately licensed under the BSD 3-Clause License contained in `reference-harness/LICENSE`.
+
+The presence of the public reference harness does not imply publication or licensing of KeyWow production architecture, proprietary algorithms, private governance mechanisms, trade secrets, customer configurations, unpublished software, or other proprietary technology.
 
 It does not contain KeyWow's proprietary implementation architecture, internal system design, algorithms, thresholds, production controls, confidential technical mechanisms, or trade-secret materials.
 
