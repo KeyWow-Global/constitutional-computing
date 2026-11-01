@@ -20,6 +20,19 @@ KeyWow's research focuses on the transition from:
 - self-reported outcomes to independent validation;
 - autonomous execution to Governed Autonomy.
 
+## Research Papers
+
+### The Authority Gap
+
+**Why intelligent systems need more than intelligence**
+
+The Authority Gap examines the difference between the actions intelligent systems can technically perform and the consequential actions they may legitimately perform under the conditions that actually apply.
+
+KeyWow Global Perspectives · Research Paper 01 develops the case for Governed Autonomy through five assessment dimensions: Authority / Context / Composition / Evidence / Adaptation.
+
+- [Research paper overview](research-papers/the-authority-gap/README.md)
+- [Full paper (PDF)](research-papers/the-authority-gap/the-authority-gap-research-paper-01.pdf)
+
 ## Technical Papers
 
 ### Beyond Policy-as-Code: Admissibility as a Runtime Primitive for Autonomous Systems
@@ -108,7 +121,7 @@ https://keywowglobal.com
 
 ## Repository Scope
 
-This repository contains public research, field analysis, and the Constitutional Computing Public Reference Harness.
+This repository contains public research papers, technical papers, field analysis, experimental research, and the Constitutional Computing Public Reference Harness.
 
 The public reference harness is a synthetic, non-production software artifact located in `reference-harness/` and is separately licensed under the BSD 3-Clause License contained in `reference-harness/LICENSE`.
 
