@@ -5,6 +5,8 @@
 KeyWow Global Perspectives · Research Paper 01  
 First Edition · November 2026
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24224861.svg)](https://doi.org/10.5281/zenodo.24224861)
+
 > Intelligence is not authority.
 
 The Authority Gap examines the institutional distance between what increasingly capable autonomous systems can technically do and what they may legitimately do under the conditions that actually apply.
@@ -67,7 +69,9 @@ The paper examines the July 2026 Hugging Face/OpenAI incident as a field lesson 
 
 ## Citation
 
-KeyWow Global. (2026). The Authority Gap: Why Intelligent Systems Need More Than Intelligence. KeyWow Global Perspectives, Research Paper 01, First Edition, November 2026.
+KeyWow Global. (2026). The Authority Gap: Why Intelligent Systems Need More Than Intelligence. KeyWow Global Perspectives, Research Paper 01, Version 1.0.0, First Edition. Zenodo. <https://doi.org/10.5281/zenodo.24224861>
+
+Concept DOI (persistent identifier for the work): <https://doi.org/10.5281/zenodo.24224860>
 
 Publisher: KeyWow Global LLC  
 Website: [KeyWow Global](https://keywowglobal.com)
