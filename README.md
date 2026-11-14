@@ -32,6 +32,7 @@ KeyWow Global Perspectives · Research Paper 01 develops the case for Governed A
 
 - [Research paper overview](research-papers/the-authority-gap/README.md)
 - [Full paper (PDF)](research-papers/the-authority-gap/the-authority-gap-research-paper-01.pdf)
+- [DOI: 10.5281/zenodo.24224861](https://doi.org/10.5281/zenodo.24224861)
 
 ## Technical Papers
 
